@@ -1,0 +1,297 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Tipax shipping\n"
+"POT-Creation-Date: 2022-03-13 12:39+0330\n"
+"PO-Revision-Date: 2024-10-08 12:56+0330\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"X-Generator: Poedit 3.2.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: tipax-shipping.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: includes/Invoice.php:217 includes/Invoice.php:233 includes/Invoice.php:322
+#: includes/Invoice.php:338 includes/Invoice.php:419 includes/Invoice.php:435
+msgid "Tipax order shipping created successfully"
+msgstr "سفارش تیپاکس شما با موفقیت ساخته شد"
+
+#: includes/Invoice.php:225 includes/Invoice.php:238 includes/Invoice.php:330
+#: includes/Invoice.php:343 includes/Invoice.php:427 includes/Invoice.php:439
+msgid "Tipax order information for "
+msgstr "اطلاعات سفارش تیپاکس برای محصول "
+
+#: includes/Invoice.php:226 includes/Invoice.php:239 includes/Invoice.php:331
+#: includes/Invoice.php:344 includes/Invoice.php:428 includes/Invoice.php:440
+msgid "Tipax Tracking Code"
+msgstr "کد رهگیری تیپاکس"
+
+#: includes/Invoice.php:227 includes/Invoice.php:240 includes/Invoice.php:332
+#: includes/Invoice.php:345 includes/Invoice.php:429 includes/Invoice.php:441
+msgid "Tipax Order Id"
+msgstr "شماره سفارش تیپاکس"
+
+#: includes/Invoice.php:308
+msgid "There was a problem in creating tipax order"
+msgstr "مشکلی در ایجاد سفارش تیپاکس شما وجود دارد"
+
+#: includes/Invoice.php:309
+msgid "Please contact us for fixing the error"
+msgstr "لطفا برای حل مشکل با مدیر فروشگاه ارتباط برقرار نمایید"
+
+#: includes/Shipping.php:65
+msgid "Plaque"
+msgstr "پلاک"
+
+#: includes/Shipping.php:68
+msgid "Enter the plaque of receiver"
+msgstr "پلاک ساختمان گیرنده را وارد نمایید"
+
+#: includes/Shipping.php:97 includes/classes/WC_Tipax_Shipping_Method.php:251
+msgid "Phone"
+msgstr "شماره موبایل"
+
+#: includes/Shipping.php:100
+msgid "Enter the phone number of receiver"
+msgstr "شماره موبایل گیرنده را وارد نمایید"
+
+#: includes/Shipping.php:132
+msgid "Please enter your Phone Number"
+msgstr "لطفا شماره موبایل را وارد کنید"
+
+#: includes/Shipping.php:135
+msgid "Please enter your plaque"
+msgstr "لطفا شماره پلاک را وارد کنید"
+
+#: includes/Shipping.php:139
+msgid "Please enter valid postalcode"
+msgstr "لطفا کدپستی را صحیح وارد کنید"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:32
+#: includes/classes/WC_Tipax_Shipping_Method.php:33
+msgid "Tipax Shipping Method"
+msgstr "روش حمل و نقل با تیپاکس"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:34
+msgid "Ship your orders with tipax"
+msgstr "سفارشات خود را با تیپاکس ارسال کنید"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:193
+msgid "Username"
+msgstr "نام کاربری"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:196
+msgid "Enter Your Tipax Username"
+msgstr "نام کاربری تیپاکس را وارد نمایید"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:197
+msgid "Username of your tipax account"
+msgstr "نام کاربری حساب کاربری شما در سایت تیپاکس"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:201
+msgid "Password"
+msgstr "رمزعبور"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:204
+msgid "Enter Your Tipax Password"
+msgstr "رمزعبور تیپاکس را وارد نمایید"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:205
+msgid "password of your tipax account"
+msgstr "رمزعبور حساب کاربری شما در سایت تیپاکس"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:212
+msgid "Enter Your Tipax Api Key which is located in profile page"
+msgstr "کلید API تیپاکس که در پروفایل کاربری شما قرار دارد وارد نمایید"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:213
+msgid "this Tipax Api Key is located in profile page"
+msgstr "این کلید در پروفایل کاربری شما در سایت تیپاکس قرار دارد"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:245
+msgid "The phone name of sender (Required)"
+msgstr "شماره موبایل فرستنده (اجباری)"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:254
+msgid "The fullname of sender (Required)"
+msgstr "نام و نام خانوادگی فرستنده (اجباری)"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:260
+msgid "Full Name"
+msgstr "نام و نام خانوادگی"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:263
+msgid "The address method"
+msgstr "روش آدرس دهی فرستنده"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:264
+msgid "Select the shipping address method"
+msgstr "روشی که قصد دارید آدرس فرستنده مشخص شود را انتخاب کنید"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:269
+msgid "shipping address method"
+msgstr "روش حمل و نقل"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:277
+msgid "the Plaque of origin (Required)"
+msgstr "پلاک فرستنده (اجباری)"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:282
+msgid "Plaque origin"
+msgstr "پلاک فرستنده"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:285
+msgid "pick address on map (Required)"
+msgstr "انتخاب فرستنده روی نقشه (اجباری)"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:286
+msgid "click on map to select the point"
+msgstr "بر روی نقشه کلیک کرده و محل ارسال کالا را انتخاب کنید"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:291
+#: includes/classes/WC_Tipax_Shipping_Method.php:294
+#: includes/classes/WC_Tipax_Shipping_Method.php:298
+msgid "shipping address"
+msgstr "آدرس ارسال"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:295
+msgid "Select the shipping address if you choose it for address method"
+msgstr "در صورتی که برای روش ارسال انتخاب آدرس را انتخاب کرده اید،آدرس را انتخاب کنید"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:303
+#: includes/classes/WC_Tipax_Shipping_Method.php:307
+msgid "Checkout Method"
+msgstr "روش پرداخت کرایه حمل"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:304
+msgid "Select the type of order shipping amount settlement"
+msgstr "روش پرداخت کرایه حمل و نقل مرسوله را انتخاب نمایید"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:309
+msgid "Post Pay (After Payment)"
+msgstr "پس کرایه"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:310
+msgid "Cash on Delivery (COD)"
+msgstr "پرداخت درب منزل (COD)"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:311
+msgid "Cash with your wallet in tipax"
+msgstr "پرداخت کرایه با کیف پول شما در تیپاکس (رایگان برای خریدار)"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:312
+msgid "Cash with receiver in invoice"
+msgstr "پرداخت با دریافت کننده (محاسبه در فاکتور و کسر از اعتبار)"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:316
+#: includes/classes/WC_Tipax_Shipping_Method.php:320
+msgid "Collection Time"
+msgstr "زمان جمع آوری"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:317
+msgid "Select the time of collection of products orders"
+msgstr "زمان جمع آوری مرسوله سفارشات را انتخاب نمایید"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:322
+msgid "The same day"
+msgstr "همان روز"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:471
+msgid "From woocommerce shop information"
+msgstr "استفاده از اطلاعات پیکربندی ووکامرس"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:474
+msgid "Pick up from map"
+msgstr "استفاده از نقشه"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:477
+msgid "From defined addresses"
+msgstr "استفاده از آدرس های از پیش تعیین شده"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:560
+msgid "Items"
+msgstr ""
+
+#: tipax-shipping.php:74 tipax-shipping.php:185
+msgid "Settings"
+msgstr "تنظیمات"
+
+#: tipax-shipping.php:185
+msgid "Complete tipax initial settings in woocommerce shipping"
+msgstr "لطفا تنطیمات ضروری و اولیه تیپاکس را در قسمت تنظیمات حمل و نقل ووکامرس کامل کنید"
+
+#: tipax-shipping.php:193
+msgid "Tipax shipping: Woocomemrce is not installed,please install and active it first"
+msgstr "حمل و نقل با تیپاکس: ووکامرس نصب نشده است،لطفا برای فعال سازی افزونه آن را نصب و فعال نمایید"
+
+#. Plugin Name of the plugin/theme
+msgid "Tipax shipping"
+msgstr "حمل و نقل با تیپاکس"
+
+#. Description of the plugin/theme
+msgid "Tipax Shipping Method for wocommerce"
+msgstr "روش حمل و نقل تیپاکس برای ووکامرس"
+
+#. Author of the plugin/theme
+msgid "AGWeb Technology"
+msgstr "AGWeb Technology"
+
+#. Author URI of the plugin/theme
+msgid "https://sabahi.ir/"
+msgstr "https://sabahi.ir/"
+
+#. Description of the cities placeholder
+msgid "Select Your City."
+msgstr "شهر خود را انتخاب کنید."
+
+#. Description of the admin options
+msgid "Do you want Tipax fills your cities?"
+msgstr "شهر های تیپاکس جایگزین شهر های فعلی شوند؟"
+
+#. Description of the admin options
+msgid "Only Tipax cities?"
+msgstr "فقط شهر های تیپاکس؟"
+
+#. Description of the admin options
+msgid "Enable this shipping method"
+msgstr "فعالسازی شیوه ارسال"
+
+#. Description of the admin enable/disable
+msgid "Enable/Disable"
+msgstr "فعال / غیر فعال"
+
+#: includes/classes/WC_Tipax_Shipping_Method.php:209
+msgid "API KEY"
+msgstr "کلید وبسرویس"
+
+msgid "Your phone number is wrong"
+msgstr "شماره موبایل شما صحیح نمیباشد"
+
+msgid "Delivery Service Tipax Shipping"
+msgstr "حمل و نقل با تیپاکس"
+
+msgid "Tipax Shipping"
+msgstr "حمل با تیپاکس"
+
+msgid "Tipax Barcodes"
+msgstr "بارکد تیپاکس"
+
+msgid "Tipax is not shipping method for this order."
+msgstr "روش حمل این سفارش تیپاکس نیست."
+
+msgid "Order type is not WooCommerce."
+msgstr "نوع سفارش ووکامرسی نیست."
+
+msgid "Print Barcodes"
+msgstr "پرینت بارکد"
+
+msgid "There is no barcodes."
+msgstr "بارکدی یافت نشد"
