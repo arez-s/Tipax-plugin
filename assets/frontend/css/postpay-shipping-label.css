@@ -1,0 +1,14 @@
+.tipax-postpay-shipping-message {
+    direction: rtl;
+    unicode-bidi: isolate;
+    white-space: normal !important;
+    line-height: 1.65;
+}
+
+.wc-block-components-shipping-rates-control .tipax-postpay-shipping-message,
+.wc-block-components-totals-shipping .tipax-postpay-shipping-message {
+    display: inline-block;
+    max-width: 250px;
+    font-size: 0.88em;
+    text-align: right;
+}

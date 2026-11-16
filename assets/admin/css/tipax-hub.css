@@ -1,0 +1,25 @@
+.tipax-hub-setup { max-width: 900px; margin: 42px auto; padding: 0 20px; color: #142e49; font-family: Tahoma, sans-serif; }
+.tipax-hub-setup-card { background: #fff; border: 1px solid #e0e7ee; border-top: 5px solid #ffcb00; border-radius: 20px; padding: 36px; box-shadow: 0 18px 60px #142e4910; }
+.tipax-hub-kicker { color: #506680; font-size: 11px; letter-spacing: 2px; }
+.tipax-hub-setup h1 { margin: 16px 0 24px; font-size: 27px; line-height: 1.7; font-weight: 700; }
+.tipax-hub-setup h2 { margin-top: 24px; font-size: 17px; }
+.tipax-hub-setup p, .tipax-hub-setup li { font-size: 13px; line-height: 2.2; }
+.tipax-hub-setup ul { list-style: disc; padding-right: 20px; }
+.tipax-hub-overlay { position: fixed; inset: 0; z-index: 100100; background: #0008; backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box; direction: rtl; }
+.tipax-hub-dialog { width: 660px; max-width: 100%; max-height: 85vh; overflow: auto; background: #33936e; padding: 32px; border: 0; border-radius: 20px; box-shadow: 0 24px 90px #0005; color: #fff; font-family: Tahoma, sans-serif; box-sizing: border-box; }
+.tipax-hub-dialog h2 { color: #fff; font-size: 23px; line-height: 1.7; margin: 0 0 20px; }
+.tipax-hub-dialog p { color: #fff; line-height: 2.1; font-size: 14px; margin: 0 0 24px; }
+.tipax-hub-dialog strong { color: inherit; }
+.tipax-hub-dialog .button-hero,
+.tipax-hub-dialog .button-hero:hover,
+.tipax-hub-dialog .button-hero:focus,
+.tipax-hub-dialog .button-hero:active { background: #fff; border: 1px solid #fff; color: #33936e; text-shadow: none; font-family: inherit; font-weight: bold; width: 100%; padding: 12px 20px; min-height: 48px; box-shadow: none; }
+.tipax-hub-dialog .button-hero:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+.tipax-hub-dialog .tipax-hub-deactivate,
+.tipax-hub-dialog .tipax-hub-deactivate:hover,
+.tipax-hub-dialog .tipax-hub-deactivate:focus,
+.tipax-hub-dialog .tipax-hub-deactivate:active { display: block; margin: 16px auto 0; padding: 0; border: 0; background: transparent; color: #fff; box-shadow: none; font-family: inherit; font-size: 13px; line-height: 2; text-decoration: underline; cursor: pointer; }
+.tipax-hub-dialog .tipax-hub-deactivate:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+.tipax-hub-state { padding: 16px 20px; background: #f0f8f5; border-radius: 12px; }
+.tipax-hub-setup .description { color: #687b90; font-size: 12px; }
+@media(max-width: 640px) { .tipax-hub-setup-card { padding: 24px 18px; } .tipax-hub-setup { margin: 20px auto; padding: 0 10px; } }

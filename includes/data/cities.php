@@ -2319,8 +2319,8 @@ $city_codes = [
   [
     "stateId"=> 1006,
     "stateTitle"=> "ایلام",
-    "cityId"=> 1217,
-    "cityTitle"=> "ایوان غرب"
+    "cityId"=> 3076,
+    "cityTitle"=> "ایوان"
   ],
   [
     "stateId"=> 1006,

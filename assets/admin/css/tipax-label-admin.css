@@ -1,0 +1,165 @@
+.column-tipax_label {
+    width: 150px;
+}
+
+.tipax-label-print-button {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-height: 32px;
+    white-space: nowrap;
+}
+
+.tipax-label-print-button .dashicons {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.tipax-label-missing {
+    display: inline-block;
+    max-width: 130px;
+    color: #8a5a1f;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.tipax-label-cancelled {
+    display: inline-block;
+    max-width: 130px;
+    color: #a43d32;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.tipax-label-not-applicable {
+    color: #a7aaa8;
+}
+
+.tipax-label-meta-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tipax-label-meta-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.tipax-label-meta-head strong {
+    color: #0b513b;
+}
+
+.tipax-label-meta-head span {
+    color: #65766d;
+    font-size: 11px;
+}
+
+.tipax-label-meta-barcodes {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tipax-label-meta-barcode {
+    padding: 8px;
+    border: 1px solid #d7e0da;
+    border-radius: 8px;
+    background: #f8faf8;
+    text-align: center;
+}
+
+.tipax-label-meta-barcode img {
+    display: block;
+    width: 100%;
+    height: 42px;
+    margin: 0 auto 5px;
+    object-fit: fill;
+}
+
+.tipax-label-meta-barcode code {
+    display: block;
+    padding: 0;
+    background: transparent;
+    color: #173027;
+    font-size: 11px;
+}
+
+.tipax-label-meta-more {
+    margin: -4px 0 0;
+    color: #65766d;
+    font-size: 11px;
+    text-align: center;
+}
+
+.tipax-label-meta-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.tipax-label-meta-actions .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tipax-label-meta-empty {
+    display: flex;
+    gap: 8px;
+    color: #65766d;
+}
+
+.tipax-label-meta-empty p {
+    margin: 0;
+    line-height: 1.7;
+}
+
+.tipax-label-select-column {
+    width: 42px;
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+.tipax-label-select-column input[type="checkbox"] {
+    margin: 0;
+}
+
+.tipax-print-selected-labels::after {
+    content: attr(data-selected-count);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    padding: 0 5px;
+    border-radius: 99px;
+    background: rgba(13, 122, 89, .12);
+    color: #0d7a59;
+    font-size: 11px;
+}
+
+.tipax-print-selected-labels:disabled::after {
+    opacity: .55;
+}
+
+.tipax-orders-table .tipax-label-row-action {
+    margin-inline-start: 6px;
+}
+
+@media (max-width: 782px) {
+    .column-tipax_label {
+        width: auto;
+    }
+
+    .tipax-label-meta-actions {
+        grid-template-columns: 1fr;
+    }
+}

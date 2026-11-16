@@ -1,0 +1,975 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>راهنمای نصب و راه‌اندازی افزونه حمل با تیپاکس</title>
+    <style>
+        @font-face {
+            font-family: "Tipax Guide";
+            src: url("../assets/BNazanin.TTF") format("truetype");
+            font-display: swap;
+        }
+
+        :root {
+            --ink: #10251c;
+            --muted: #53685e;
+            --paper: #fbfaf3;
+            --card: #ffffff;
+            --line: #dce7df;
+            --green: #087a4f;
+            --green-dark: #075238;
+            --mint: #e8f5ed;
+            --lime: #c9e96e;
+            --amber: #d98b18;
+            --amber-bg: #fff4d9;
+            --red: #a63a35;
+            --red-bg: #fff0ed;
+            --blue: #216b83;
+            --blue-bg: #eaf6fa;
+            --shadow: 0 18px 50px rgba(16, 37, 28, 0.10);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 10% 8%, rgba(201, 233, 110, 0.22), transparent 24rem),
+                radial-gradient(circle at 92% 28%, rgba(8, 122, 79, 0.10), transparent 28rem),
+                var(--paper);
+            font-family: "Tipax Guide", Tahoma, sans-serif;
+            font-size: 19px;
+            line-height: 1.85;
+        }
+
+        a {
+            color: var(--green-dark);
+        }
+
+        code,
+        .path {
+            direction: ltr;
+            display: inline-block;
+            color: #0b5d40;
+            background: #eff7f2;
+            border: 1px solid #d4e8db;
+            border-radius: 7px;
+            padding: 0.05rem 0.45rem;
+            font-family: Consolas, monospace;
+            font-size: 0.78em;
+            unicode-bidi: isolate;
+        }
+
+        pre {
+            direction: ltr;
+            overflow-x: auto;
+            margin: 14px 0;
+            padding: 14px 16px;
+            color: #dff5e8;
+            background: #0b2d20;
+            border-radius: 12px;
+            text-align: left;
+        }
+
+        pre code {
+            display: block;
+            padding: 0;
+            color: inherit;
+            background: transparent;
+            border: 0;
+            white-space: pre;
+        }
+
+        .page-shell {
+            width: min(1160px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 28px 0 80px;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            min-height: 410px;
+            padding: clamp(38px, 7vw, 78px);
+            color: #fff;
+            background: linear-gradient(132deg, #061d14 0%, #075238 55%, #0b8b59 100%);
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero::before,
+        .hero::after {
+            position: absolute;
+            content: "";
+            border-radius: 999px;
+            pointer-events: none;
+        }
+
+        .hero::before {
+            width: 420px;
+            height: 420px;
+            inset: -210px auto auto -110px;
+            border: 72px solid rgba(201, 233, 110, 0.12);
+        }
+
+        .hero::after {
+            width: 190px;
+            height: 190px;
+            inset: auto 8% -95px auto;
+            background: rgba(201, 233, 110, 0.17);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 780px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 6px 14px;
+            color: #e9ffd0;
+            background: rgba(255, 255, 255, 0.09);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 999px;
+            font: 700 14px/1.7 Tahoma, sans-serif;
+        }
+
+        .hero h1 {
+            max-width: 720px;
+            margin: 0 0 18px;
+            font: 900 clamp(35px, 6vw, 68px)/1.25 "Tipax Guide", Tahoma, sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: 0;
+            color: #d8ece2;
+            font-size: clamp(18px, 2.3vw, 24px);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .hero-actions a,
+        .hero-actions button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 46px;
+            padding: 9px 18px;
+            color: #082419;
+            background: var(--lime);
+            border: 0;
+            border-radius: 12px;
+            font: 700 14px/1.5 Tahoma, sans-serif;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .hero-actions .secondary {
+            color: #fff;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.28);
+        }
+
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+            margin: -34px 28px 36px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .quick-card {
+            min-height: 120px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(8, 122, 79, 0.12);
+            border-radius: 18px;
+            box-shadow: 0 12px 28px rgba(16, 37, 28, 0.08);
+        }
+
+        .quick-card b {
+            display: block;
+            color: var(--green);
+            font: 800 13px/1.5 Tahoma, sans-serif;
+        }
+
+        .quick-card span {
+            display: block;
+            margin-top: 7px;
+            font-size: 18px;
+            line-height: 1.55;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 250px minmax(0, 1fr);
+            gap: 28px;
+            align-items: start;
+        }
+
+        .toc {
+            position: sticky;
+            top: 18px;
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.86);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(16, 37, 28, 0.06);
+            backdrop-filter: blur(12px);
+        }
+
+        .toc strong {
+            display: block;
+            margin-bottom: 12px;
+            font: 800 14px/1.5 Tahoma, sans-serif;
+        }
+
+        .toc a {
+            display: block;
+            padding: 7px 10px;
+            color: var(--muted);
+            border-radius: 9px;
+            font-size: 16px;
+            line-height: 1.45;
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            color: var(--green-dark);
+            background: var(--mint);
+        }
+
+        main {
+            min-width: 0;
+        }
+
+        section {
+            scroll-margin-top: 22px;
+            margin-bottom: 24px;
+            padding: clamp(24px, 4vw, 42px);
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(16, 37, 28, 0.045);
+        }
+
+        section h2 {
+            display: flex;
+            gap: 13px;
+            align-items: center;
+            margin: 0 0 18px;
+            color: var(--green-dark);
+            font: 900 clamp(25px, 3vw, 34px)/1.35 "Tipax Guide", Tahoma, sans-serif;
+        }
+
+        .section-index {
+            display: inline-grid;
+            place-items: center;
+            width: 38px;
+            height: 38px;
+            flex: 0 0 38px;
+            color: #fff;
+            background: var(--green);
+            border-radius: 12px;
+            font: 800 15px/1 Tahoma, sans-serif;
+        }
+
+        h3 {
+            margin: 28px 0 10px;
+            color: #183c2c;
+            font: 800 19px/1.65 Tahoma, sans-serif;
+        }
+
+        p {
+            margin: 0.65rem 0;
+        }
+
+        ul,
+        ol {
+            margin: 12px 0;
+            padding-right: 25px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .steps {
+            list-style: none;
+            counter-reset: setup-step;
+            padding: 0;
+        }
+
+        .steps > li {
+            position: relative;
+            margin: 0 0 14px;
+            padding: 16px 58px 16px 18px;
+            background: #f8fbf9;
+            border: 1px solid #e4ece7;
+            border-radius: 14px;
+            counter-increment: setup-step;
+        }
+
+        .steps > li::before {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            display: grid;
+            place-items: center;
+            width: 30px;
+            height: 30px;
+            color: #fff;
+            background: var(--green);
+            border-radius: 9px;
+            content: counter(setup-step);
+            font: 700 13px/1 Tahoma, sans-serif;
+        }
+
+        .callout {
+            margin: 20px 0;
+            padding: 18px 20px;
+            border-right: 5px solid;
+            border-radius: 14px;
+        }
+
+        .callout strong {
+            display: block;
+            margin-bottom: 4px;
+            font-family: Tahoma, sans-serif;
+            font-size: 15px;
+        }
+
+        .callout.important {
+            color: #65410d;
+            background: var(--amber-bg);
+            border-color: var(--amber);
+        }
+
+        .callout.success {
+            color: #154b32;
+            background: var(--mint);
+            border-color: var(--green);
+        }
+
+        .callout.danger {
+            color: #702a27;
+            background: var(--red-bg);
+            border-color: var(--red);
+        }
+
+        .callout.info {
+            color: #164c5d;
+            background: var(--blue-bg);
+            border-color: var(--blue);
+        }
+
+        .pathway {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            margin: 14px 0;
+        }
+
+        .pathway span {
+            padding: 7px 12px;
+            color: #174831;
+            background: var(--mint);
+            border-radius: 10px;
+            font: 700 14px/1.5 Tahoma, sans-serif;
+        }
+
+        .pathway i {
+            color: #86a295;
+            font-style: normal;
+        }
+
+        .option-grid,
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 18px;
+        }
+
+        .option,
+        .test-card {
+            padding: 18px;
+            background: #fbfcfb;
+            border: 1px solid var(--line);
+            border-radius: 15px;
+        }
+
+        .option b,
+        .test-card b {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--green-dark);
+            font-family: Tahoma, sans-serif;
+            font-size: 14px;
+        }
+
+        .option p,
+        .test-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 17px;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            margin: 18px 0;
+            border: 1px solid var(--line);
+            border-radius: 15px;
+        }
+
+        table {
+            width: 100%;
+            min-width: 680px;
+            border-collapse: collapse;
+            background: #fff;
+        }
+
+        th,
+        td {
+            padding: 13px 16px;
+            text-align: right;
+            vertical-align: top;
+            border-bottom: 1px solid var(--line);
+        }
+
+        th {
+            color: #fff;
+            background: var(--green-dark);
+            font-family: Tahoma, sans-serif;
+            font-size: 13px;
+        }
+
+        tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .checklist {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px 18px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            position: relative;
+            margin: 0;
+            padding: 11px 42px 11px 12px;
+            background: #f7faf8;
+            border-radius: 11px;
+        }
+
+        .checklist li::before {
+            position: absolute;
+            right: 13px;
+            top: 12px;
+            content: "✓";
+            color: var(--green);
+            font: 900 18px/1 Tahoma, sans-serif;
+        }
+
+        .footer {
+            margin-top: 30px;
+            padding: 26px;
+            color: #d7e8df;
+            background: #0a291d;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .footer strong {
+            color: var(--lime);
+            font-family: Tahoma, sans-serif;
+            font-size: 14px;
+        }
+
+        @media (max-width: 920px) {
+            .quick-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .toc {
+                position: static;
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .toc strong {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 620px) {
+            body {
+                font-size: 17px;
+            }
+
+            .page-shell {
+                width: min(100% - 18px, 1160px);
+                padding-top: 9px;
+            }
+
+            .hero {
+                min-height: 0;
+                padding: 34px 24px 52px;
+                border-radius: 20px;
+            }
+
+            .quick-grid {
+                grid-template-columns: 1fr;
+                margin: -24px 12px 24px;
+            }
+
+            .toc,
+            .option-grid,
+            .test-grid,
+            .checklist {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 22px 18px;
+                border-radius: 18px;
+            }
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 13mm;
+            }
+
+            body {
+                background: #fff;
+                font-size: 14px;
+            }
+
+            .page-shell {
+                width: 100%;
+                padding: 0;
+            }
+
+            .hero {
+                min-height: 0;
+                padding: 28px;
+                border-radius: 12px;
+                box-shadow: none;
+            }
+
+            .hero-actions,
+            .toc {
+                display: none;
+            }
+
+            .quick-grid {
+                margin: 14px 0 20px;
+            }
+
+            .quick-card,
+            section {
+                break-inside: avoid;
+                box-shadow: none;
+            }
+
+            .layout {
+                display: block;
+            }
+
+            section {
+                padding: 22px;
+                border-radius: 12px;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-shell">
+    <header class="hero">
+        <div class="hero-content">
+            <span class="eyebrow">راهنمای رسمی راه‌اندازی اولیه · نسخه ۳.۱۱.۲</span>
+            <h1>نصب و راه‌اندازی افزونه حمل با تیپاکس</h1>
+            <p>از نصب افزونه و اتصال حساب تیپاکس تا نمایش نرخ در تسویه‌حساب، ثبت مرسوله، چاپ لیبل و رهگیری سفارش‌ها.</p>
+            <div class="hero-actions">
+                <a href="#fast-start">شروع راه‌اندازی</a>
+                <button class="secondary" type="button" onclick="window.print()">چاپ یا ذخیره PDF</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="quick-grid" aria-label="خلاصه راه‌اندازی">
+        <div class="quick-card"><b>زمان تقریبی</b><span>۱۰ تا ۱۵ دقیقه</span></div>
+        <div class="quick-card"><b>پیش‌نیاز اصلی</b><span>حساب فعال تیپاکس</span></div>
+        <div class="quick-card"><b>سازگار با Checkout</b><span>کلاسیک، Elementor و Blocks</span></div>
+        <div class="quick-card"><b>آخرین مرحله</b><span>ثبت یک سفارش آزمایشی</span></div>
+    </div>
+
+    <div class="layout">
+        <nav class="toc" aria-label="فهرست راهنما">
+            <strong>فهرست راهنما</strong>
+            <a href="#requirements">پیش‌نیازها</a>
+            <a href="#install">نصب افزونه</a>
+            <a href="#fast-start">مسیر سریع</a>
+            <a href="#connection">اتصال به تیپاکس</a>
+            <a href="#diagnostics">بررسی اتصال</a>
+            <a href="#addresses">آدرس فرستنده</a>
+            <a href="#shipping-zone">ناحیه حمل‌ونقل</a>
+            <a href="#cities">شهرهای تیپاکس</a>
+            <a href="#settings">تنظیمات اصلی</a>
+            <a href="#checkout">آزمایش Checkout</a>
+            <a href="#daily-use">استفاده روزمره</a>
+            <a href="#tracking">رهگیری مرسوله</a>
+            <a href="#troubleshooting">رفع اشکال</a>
+            <a href="#final-check">چک‌لیست نهایی</a>
+        </nav>
+
+        <main>
+            <section id="requirements">
+                <h2><span class="section-index">۱</span>پیش‌نیازهای نصب</h2>
+                <ul class="checklist">
+                    <li>وردپرس ۵.۸ یا جدیدتر</li>
+                    <li>ووکامرس ۷.۱ یا جدیدتر</li>
+                    <li>PHP نسخه ۷.۴ یا جدیدتر</li>
+                    <li>فعال بودن افزونه PHP به نام <code>mbstring</code></li>
+                    <li>دسترسی خروجی HTTPS به <code>omapi.tipax.ir</code></li>
+                    <li>نام کاربری، رمز عبور و API Key حساب تیپاکس</li>
+                </ul>
+                <div class="callout info">
+                    <strong>قبل از شروع</strong>
+                    اطلاعات ورود و API Key را از حساب تیپاکس خود آماده کنید. این اطلاعات را فقط در صفحه اتصال افزونه وارد کنید و برای افراد دیگر ارسال نکنید.
+                </div>
+            </section>
+
+            <section id="install">
+                <h2><span class="section-index">۲</span>نصب افزونه</h2>
+                <h3>نصب با فایل ZIP</h3>
+                <ol class="steps">
+                    <li>در مدیریت وردپرس وارد مسیر «افزونه‌ها ← افزودن افزونه تازه» شوید.</li>
+                    <li>روی «بارگذاری افزونه» بزنید و فایل ZIP افزونه را انتخاب کنید.</li>
+                    <li>«هم‌اکنون نصب نمایید» و سپس «فعال‌کردن افزونه» را بزنید.</li>
+                    <li>پس از فعال‌سازی، منوی «حمل با تیپاکس» باید در مدیریت وردپرس دیده شود.</li>
+                </ol>
+
+                <h3>نصب با FTP</h3>
+                <p>پوشه استخراج‌شده افزونه را در مسیر زیر بارگذاری و سپس از بخش افزونه‌های وردپرس فعال کنید:</p>
+                <p><span class="path">/wp-content/plugins/delivery-services-tipax-shipping/</span></p>
+
+                <div class="callout important">
+                    <strong>نکته بسیار مهم درباره حمل‌ونقل ووکامرس</strong>
+                    فعال‌سازی افزونه، روش «تیپاکس» را در ووکامرس ثبت می‌کند؛ اما آن را به‌صورت خودکار به تمام ناحیه‌های حمل‌ونقل فروشگاه اضافه نمی‌کند. برای نمایش تیپاکس در Checkout باید مرحله «ناحیه حمل‌ونقل» این راهنما را حتماً انجام دهید.
+                </div>
+            </section>
+
+            <section id="fast-start">
+                <h2><span class="section-index">۳</span>مسیر سریع راه‌اندازی</h2>
+                <p>برای راه‌اندازی صحیح، ترتیب زیر را تغییر ندهید:</p>
+                <div class="pathway" aria-label="ترتیب راه‌اندازی">
+                    <span>اتصال</span><i>←</i>
+                    <span>بررسی اتصال</span><i>←</i>
+                    <span>انتخاب آدرس مبدا</span><i>←</i>
+                    <span>افزودن به Zone</span><i>←</i>
+                    <span>تنظیم تسویه و بسته‌بندی</span><i>←</i>
+                    <span>سفارش آزمایشی</span>
+                </div>
+                <div class="callout success">
+                    <strong>قاعده راه‌اندازی</strong>
+                    تا زمانی که اتصال تأیید و یک آدرس به‌عنوان «مبدای فعلی سایت» انتخاب نشده باشد، انتظار نمایش نرخ یا ثبت مرسوله در تیپاکس را نداشته باشید.
+                </div>
+            </section>
+
+            <section id="connection">
+                <h2><span class="section-index">۴</span>اتصال حساب تیپاکس</h2>
+                <div class="pathway">
+                    <span>مدیریت وردپرس</span><i>←</i><span>حمل با تیپاکس</span><i>←</i><span>اتصال</span>
+                </div>
+                <ol class="steps">
+                    <li>گزینه فعال‌بودن روش حمل تیپاکس را روشن کنید.</li>
+                    <li>نام کاربری حساب تیپاکس را دقیقاً وارد کنید.</li>
+                    <li>رمز عبور حساب تیپاکس را وارد کنید.</li>
+                    <li>API Key را بدون فاصله اضافی در ابتدا یا انتها وارد کنید.</li>
+                    <li>روی «ذخیره تنظیمات» بزنید.</li>
+                </ol>
+                <div class="callout danger">
+                    <strong>امنیت اطلاعات اتصال</strong>
+                    رمز عبور و API Key را در تیکت عمومی، تصویر آموزشی یا فایل لاگ قابل دانلود قرار ندهید. سایت باید با HTTPS اجرا شود.
+                </div>
+            </section>
+
+            <section id="diagnostics">
+                <h2><span class="section-index">۵</span>بررسی اتصال و محیط</h2>
+                <div class="pathway">
+                    <span>حمل با تیپاکس</span><i>←</i><span>بررسی اتصال</span><i>←</i><span>شروع بررسی</span>
+                </div>
+                <p>پس از ذخیره اطلاعات اتصال، «شروع بررسی» را اجرا کنید. موارد زیر باید موفق باشند:</p>
+                <ul class="checklist">
+                    <li>فعال بودن روش حمل تیپاکس</li>
+                    <li>ارتباط با پورت ۴۴۳ سرور تیپاکس</li>
+                    <li>برقراری TLS/SSL</li>
+                    <li>نسخه مناسب وردپرس، ووکامرس و PHP</li>
+                    <li>فعال بودن cURL</li>
+                    <li>اعتبارسنجی API Key</li>
+                    <li>دریافت آدرس‌های حساب تیپاکس</li>
+                </ul>
+                <div class="callout info">
+                    <strong>اگر دریافت آدرس ناموفق بود</strong>
+                    ابتدا مطمئن شوید اتصال API موفق است و در حساب تیپاکس حداقل یک آدرس معتبر وجود دارد. سپس صفحه «آدرس‌ها» را باز کنید و «بروزرسانی لیست آدرس‌ها» را بزنید.
+                </div>
+            </section>
+
+            <section id="addresses">
+                <h2><span class="section-index">۶</span>ثبت و انتخاب آدرس فرستنده</h2>
+                <div class="pathway">
+                    <span>حمل با تیپاکس</span><i>←</i><span>آدرس‌ها</span>
+                </div>
+                <ol class="steps">
+                    <li>روی «بروزرسانی لیست آدرس‌ها» بزنید تا آدرس‌های حساب تیپاکس دریافت شوند.</li>
+                    <li>اگر آدرسی ندارید، «افزودن آدرس جدید» را انتخاب و فرم را کامل کنید.</li>
+                    <li>در جدول آدرس‌ها، آدرس مناسب فروشگاه را «به‌عنوان مبدا سایت» انتخاب کنید.</li>
+                    <li>کنار آدرس انتخابی باید عبارت «مبدای فعلی سایت» نمایش داده شود.</li>
+                </ol>
+                <p>این مبدا برای استعلام نرخ، تشخیص مسیر درون‌شهری یا بین‌شهری و ثبت سفارش در تیپاکس استفاده می‌شود.</p>
+            </section>
+
+            <section id="shipping-zone">
+                <h2><span class="section-index">۷</span>افزودن تیپاکس به ناحیه حمل‌ونقل</h2>
+                <div class="pathway">
+                    <span>ووکامرس</span><i>←</i><span>پیکربندی</span><i>←</i><span>حمل‌ونقل</span><i>←</i><span>مناطق حمل‌ونقل</span>
+                </div>
+                <ol class="steps">
+                    <li>ناحیه‌ای را که مشتریان آن باید تیپاکس را ببینند باز کنید؛ برای مثال «ایران» یا استان‌های موردنظر.</li>
+                    <li>روی «افزودن روش حمل‌ونقل» بزنید.</li>
+                    <li>روش «تیپاکس» را انتخاب و اضافه کنید.</li>
+                    <li>مطمئن شوید سوییچ روش تیپاکس در همان ناحیه فعال است.</li>
+                    <li>این کار را برای هر Zone دیگری که باید تیپاکس داشته باشد تکرار کنید.</li>
+                </ol>
+                <div class="callout important">
+                    <strong>پاسخ کوتاه به یک سؤال رایج</strong>
+                    بله، برای نمایش روش تیپاکس در تسویه‌حساب باید آن را به ناحیه حمل‌ونقل مرتبط اضافه کنید. صرفاً نصب و فعال‌سازی افزونه برای اضافه شدن به Zone کافی نیست.
+                </div>
+                <p>افزودن تیپاکس به یک Zone، سایر روش‌های حمل همان Zone را حذف یا غیرفعال نمی‌کند. ووکامرس می‌تواند چند روش حمل را هم‌زمان مدیریت کند.</p>
+            </section>
+
+            <section id="cities">
+                <h2><span class="section-index">۸</span>تنظیم شهرهای تیپاکس</h2>
+                <div class="option-grid">
+                    <div class="option">
+                        <b>شهرهای تیپاکس روشن</b>
+                        <p>فهرست شهرهای تیپاکس مستقیماً در Checkout کلاسیک، Elementor و Checkout Block نمایش داده می‌شود.</p>
+                    </div>
+                    <div class="option">
+                        <b>شهرهای تیپاکس خاموش</b>
+                        <p>فیلد شهر قالب یا افزونه حمل دیگر باقی می‌ماند و افزونه هنگام استعلام، شهر را به شناسه تیپاکس تبدیل می‌کند.</p>
+                    </div>
+                </div>
+                <h3>مدیریت شهرها</h3>
+                <div class="pathway"><span>حمل با تیپاکس</span><i>←</i><span>شهرها</span></div>
+                <ul>
+                    <li>با «بروزرسانی شهرها» آخرین فهرست را از تیپاکس دریافت کنید.</li>
+                    <li>با فیلتر استان و جست‌وجوی شهر، موارد موردنظر را سریع‌تر پیدا کنید.</li>
+                    <li>اگر ارسال تیپاکس به شهری را نمی‌خواهید، همان شهر را غیرفعال کنید.</li>
+                    <li>شهر غیرفعال همچنان می‌تواند در Checkout دیده شود، اما روش حمل تیپاکس برای آن ارائه نمی‌شود.</li>
+                </ul>
+                <div class="callout success">
+                    <strong>سازگاری با افزونه‌های حمل دیگر</strong>
+                    افزونه برای درخواست تیپاکس از شناسه شهر خود تیپاکس استفاده می‌کند. بنابراین وجود افزونه‌هایی مانند تاپین نباید شناسه شهر ارسالی به تیپاکس را جایگزین کند.
+                </div>
+            </section>
+
+            <section id="settings">
+                <h2><span class="section-index">۹</span>تنظیمات اصلی افزونه</h2>
+                <div class="pathway"><span>حمل با تیپاکس</span><i>←</i><span>تنظیمات</span></div>
+
+                <h3>اطلاعات فرستنده و لیبل</h3>
+                <ul>
+                    <li>نام کامل و تلفن فرستنده را وارد کنید.</li>
+                    <li>در صورت نیاز لوگوی فروشگاه را برای چاپ لیبل انتخاب کنید.</li>
+                    <li>طرح لیبل را از میان «تمام اطلاعات»، «بدون فرستنده»، «فقط بارکد» یا «بدون شماره فرستنده» انتخاب کنید.</li>
+                </ul>
+
+                <h3>مدل پرداخت کرایه</h3>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>مدل</th><th>رفتار</th><th>نکته مهم</th></tr></thead>
+                        <tbody>
+                        <tr><td>پس‌کرایه</td><td>کرایه توسط تیپاکس از گیرنده دریافت می‌شود.</td><td>مبلغ نمایش‌داده‌شده صرفاً اطلاع‌رسانی است و به پرداخت آنلاین اضافه نمی‌شود.</td></tr>
+                        <tr><td>پرداخت فرستنده</td><td>کل کرایه تیپاکس با روش اعتباری، کیف پول یا نقدی از فرستنده تسویه می‌شود.</td><td>مبلغی که از مشتری می‌گیرید می‌تواند رایگان، ثابت یا برابر نرخ تیپاکس باشد.</td></tr>
+                        <tr><td>COD تیپاکس</td><td>مبلغ سفارش برای دریافت در محل به تیپاکس ارسال می‌شود.</td><td>در Checkout تیپاکس، درگاه COD اختصاصی افزونه استفاده می‌شود.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>بسته‌بندی و ابعاد</h3>
+                <ul>
+                    <li>در حالت «پیش‌فرض»، وزن متوسط و ابعاد طول، عرض و ارتفاع را بر حسب کیلوگرم و سانتی‌متر وارد کنید.</li>
+                    <li>در حالت بدون بسته‌بندی، شناسه ۵۰۴ تا وزن ۳۰.۵ کیلوگرم استفاده می‌شود. برای وزن بیشتر از ۳۰.۵ تا ۱۰۰ کیلوگرم، شناسه ۵۲۱ فقط زمانی معتبر است که ارتفاع مرسوله بیشتر از ۱۰ سانتی‌متر باشد. ارتفاع پاکت و فلایر نیز نباید بیشتر از ۵ سانتی‌متر باشد.</li>
+                    <li>اگر بسته‌بندی مشخصی انتخاب کنید، ابعاد همان بسته از فهرست تیپاکس استفاده می‌شود.</li>
+                    <li>سفارش‌های سنگین در صورت نیاز به چند بسته تقسیم می‌شوند.</li>
+                </ul>
+
+                <h3>نوع جمع‌آوری</h3>
+                <p>یکی از گزینه‌های «جمع‌آوری در محل مشتری» یا «جمع‌آوری در نمایندگی» را مطابق قرارداد خود انتخاب کنید.</p>
+
+                <h3>سرویس همان روز و نقشه نشان</h3>
+                <ul>
+                    <li>این سرویس را فقط زمانی فعال کنید که مبدا انتخاب‌شده تیپاکس در شهر تهران باشد.</li>
+                    <li>نرخ همان روز فقط برای مقصد تهران، پیش از ساعت ۱۳:۰۰ به وقت ایران و با رعایت محدودیت‌های وزن، ابعاد و بسته‌بندی نمایش داده می‌شود.</li>
+                    <li>پس از انتخاب نرخ «همان روز»، مشتری باید موقعیت دقیق گیرنده را روی نقشه نشان مشخص کند یا از دکمه «موقعیت فعلی من» استفاده کند.</li>
+                    <li>مختصات روی سفارش ذخیره می‌شود و فقط در درخواست ثبت سرویس همان روز به تیپاکس ارسال خواهد شد.</li>
+                    <li>برای نصب عادی نیازی به واردکردن کلید نیست؛ credential پیش‌فرض به‌صورت رمز‌شده داخل بسته قرار دارد و فقط در حافظه PHP سمت سرور باز می‌شود.</li>
+                    <li>کلید صحیح در HTML، JavaScript، Network مرورگر، لاگ یا سورس متنی افزونه نمایش داده نمی‌شود.</li>
+                </ul>
+                <p>تنظیم زیر فقط برای تعویض اضطراری کلید یا استقرارهای کنترل‌شده اختیاری است. مقدار Environment یا <code>wp-config.php</code> همیشه بر credential داخلی اولویت دارد:</p>
+                <pre><code>define('TIPAX_NESHAN_STATIC_MAP_KEY', getenv('TIPAX_NESHAN_STATIC_MAP_KEY') ?: 'YOUR_STATIC_MAP_KEY');</code></pre>
+                <p>کلید Web SDK در این نسخه استفاده نمی‌شود. رمزگذاری داخلی استخراج ساده را دشوار می‌کند، اما اگر محرمانگی در برابر مدیر کامل سرور نیز لازم باشد باید از gateway مرکزی استفاده شود.</p>
+
+                <h3>ثبت آنلاین یا آفلاین در Checkout</h3>
+                <div class="option-grid">
+                    <div class="option">
+                        <b>حالت آفلاین روشن</b>
+                        <p>Checkout هیچ سفارشی به تیپاکس ارسال نمی‌کند. سفارش باید بعداً از منوی سفارشات با «ثبت در تیپاکس» ثبت شود.</p>
+                    </div>
+                    <div class="option">
+                        <b>حالت آفلاین خاموش</b>
+                        <p>ثبت به‌صورت آنلاین انجام می‌شود؛ اگر پاسخ تیپاکس از Timeout عبور کند، سفارش برای ثبت دستی ذخیره می‌شود.</p>
+                    </div>
+                </div>
+
+                <h3>ثبت لاگ</h3>
+                <p>فقط هنگام عیب‌یابی «ثبت لاگ» را روشن کنید. وقتی خاموش باشد، منوی لاگ نمایش داده نمی‌شود و فایل لاگ نباید با رویدادهای جدید بزرگ‌تر شود.</p>
+            </section>
+
+            <section id="checkout">
+                <h2><span class="section-index">۱۰</span>آزمایش نهایی Checkout</h2>
+                <p>پس از ذخیره تنظیمات، یک محصول واقعی را با وزن، قیمت و موجودی معتبر به سبد اضافه کنید و Checkout را در پنجره ناشناس مرورگر آزمایش کنید.</p>
+                <div class="test-grid">
+                    <div class="test-card"><b>۱. آدرس ایران</b><p>کشور، استان، شهر، کدپستی، آدرس و موبایل را کامل کنید.</p></div>
+                    <div class="test-card"><b>۲. بارگذاری شهر</b><p>با انتخاب استان، فهرست شهر باید در همان بار اول لود شود.</p></div>
+                    <div class="test-card"><b>۳. نمایش تیپاکس</b><p>روش تیپاکس باید برای Zone و شهر فعال نمایش داده شود.</p></div>
+                    <div class="test-card"><b>۴. نرخ و تسویه</b><p>مبلغ نمایش‌داده‌شده را با مدل پرداخت انتخابی مقایسه کنید.</p></div>
+                    <div class="test-card"><b>۵. درگاه پرداخت</b><p>در حالت COD، درگاه اختصاصی تیپاکس باید قابل انتخاب باشد.</p></div>
+                    <div class="test-card"><b>۶. همان روز</b><p>برای سفارش تهران به تهران، نرخ همان روز را انتخاب و ثبت اجباری موقعیت روی نقشه را بررسی کنید.</p></div>
+                    <div class="test-card"><b>۷. ثبت سفارش</b><p>یک سفارش کامل ثبت و نتیجه را در منوی سفارشات افزونه بررسی کنید.</p></div>
+                </div>
+                <div class="callout info">
+                    <strong>Checkoutهای پشتیبانی‌شده</strong>
+                    فهرست شهر و روش حمل تیپاکس برای Checkout استاندارد با شورت‌کد، Checkout سفارشی Elementor و WooCommerce Checkout Block طراحی شده است. نیازی به غیرفعال‌کردن Gutenberg یا جایگزینی محتوای صفحه Checkout نیست.
+                </div>
+            </section>
+
+            <section id="daily-use">
+                <h2><span class="section-index">۱۱</span>مدیریت روزمره سفارش‌ها</h2>
+                <div class="pathway"><span>حمل با تیپاکس</span><i>←</i><span>سفارشات</span></div>
+                <ul>
+                    <li>فقط سفارش‌های دارای روش ارسال تیپاکس در نمای اصلی دیده می‌شوند.</li>
+                    <li>برای سفارش آفلاین یا ناموفق از «ثبت در تیپاکس» یا «ثبت مجدد در تیپاکس» استفاده کنید.</li>
+                    <li>پیش از ثبت مجدد می‌توانید مبدا، وزن، بسته‌بندی و ابعاد را بازبینی کنید.</li>
+                    <li>وضعیت سفارش‌های قابل رهگیری را تکی یا گروهی بروزرسانی کنید.</li>
+                    <li>لیبل را تکی یا با انتخاب چند سفارش چاپ کنید.</li>
+                    <li>مرسوله ثبت‌شده و قابل ابطال را از همان صفحه ابطال کنید.</li>
+                    <li>با فیلتر تاریخ، سفارش‌های قدیمی‌تر از بازه پیش‌فرض را مشاهده کنید.</li>
+                </ul>
+                <p>وضعیت مرسوله‌های قابل بروزرسانی هر ۲۴ ساعت نیز به‌صورت خودکار بررسی می‌شود.</p>
+            </section>
+
+            <section id="tracking">
+                <h2><span class="section-index">۱۲</span>رهگیری برای مشتریان</h2>
+                <h3>شورت‌کد رهگیری</h3>
+                <p>یک برگه جدید بسازید و شورت‌کد زیر را در بلوک Shortcode قرار دهید:</p>
+                <p><code>[tipax_tracking]</code></p>
+                <p>کاربر می‌تواند کد رهگیری حروفی یا شماره قرارداد عددی تیپاکس را وارد کند. افزونه نوع کد را تشخیص می‌دهد و سرویس مناسب را فراخوانی می‌کند.</p>
+
+                <h3>حساب کاربری ووکامرس</h3>
+                <p>در «حساب کاربری من» بخش «رهگیری مرسولات در تیپاکس» برای مشتری نمایش داده می‌شود.</p>
+                <div class="callout info">
+                    <strong>اگر منوی رهگیری دیده نشد</strong>
+                    یک‌بار از مسیر «تنظیمات ← پیوندهای یکتا» بدون تغییر گزینه‌ها روی «ذخیره تغییرات» بزنید تا Rewrite Rules وردپرس بازسازی شود.
+                </div>
+            </section>
+
+            <section id="troubleshooting">
+                <h2><span class="section-index">۱۳</span>رفع اشکال سریع</h2>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>نشانه</th><th>مواردی که باید بررسی شوند</th></tr></thead>
+                        <tbody>
+                        <tr><td>تیپاکس در Checkout نیست</td><td>روش تیپاکس به Zone اضافه و فعال باشد؛ آدرس مشتری داخل همان Zone باشد؛ شهر غیرفعال نشده باشد؛ اتصال و مبدا معتبر باشند.</td></tr>
+                        <tr><td>فیلد شهر متنی است</td><td>در تنظیمات افزونه گزینه «فقط شهرهای پشتیبانی‌شده تیپاکس» را روشن کنید؛ کش صفحه و افزونه‌های بهینه‌ساز را پاک کنید.</td></tr>
+                        <tr><td>شهرها لود نمی‌شوند</td><td>Network مرورگر، nonce، پاسخ AJAX، کش JavaScript و بروز بودن افزونه را بررسی کنید؛ سپس شهرها را از منوی شهرها بروزرسانی کنید.</td></tr>
+                        <tr><td>سرویس برای شهر موجود نیست</td><td>کش شهرها را بروزرسانی و نام استان/شهر را کنترل کنید. در سایت‌های دارای افزونه حمل دیگر، نگاشت شهر باید به شناسه تیپاکس برسد.</td></tr>
+                        <tr><td>آدرس‌های تیپاکس دریافت نمی‌شوند</td><td>API Key، نام کاربری، رمز عبور، HTTPS خروجی و وجود آدرس در حساب تیپاکس را بررسی کنید.</td></tr>
+                        <tr><td>سفارش در تیپاکس ثبت نشده</td><td>حالت آفلاین و Timeout را بررسی و سفارش را از منوی سفارشات به‌صورت دستی ثبت کنید.</td></tr>
+                        <tr><td>خطای بسته‌بندی</td><td>وزن و ابعاد محصول، بسته انتخابی و محدودیت‌های حداقل/حداکثر آن بسته را بررسی کنید.</td></tr>
+                        <tr><td>درگاه COD دیده نمی‌شود</td><td>COD را در تنظیمات افزونه فعال کنید، روش حمل انتخاب‌شده تیپاکس باشد و کش Checkout را پاک کنید.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="callout important">
+                    <strong>لاگ فقط برای عیب‌یابی</strong>
+                    در صورت نیاز، ثبت لاگ را موقتاً روشن کنید، خطا را بازتولید کنید و سپس دوباره خاموش کنید. اطلاعات حساس را پیش از ارسال لاگ حذف کنید.
+                </div>
+            </section>
+
+            <section id="final-check">
+                <h2><span class="section-index">۱۴</span>چک‌لیست تحویل نهایی</h2>
+                <ul class="checklist">
+                    <li>افزونه نصب و فعال است.</li>
+                    <li>اطلاعات اتصال ذخیره شده است.</li>
+                    <li>بررسی اتصال بدون خطای اصلی انجام شده است.</li>
+                    <li>یک آدرس به‌عنوان مبدا سایت انتخاب شده است.</li>
+                    <li>تیپاکس به Zoneهای موردنظر اضافه شده است.</li>
+                    <li>شهرهای تیپاکس بروزرسانی شده‌اند.</li>
+                    <li>مدل تسویه و COD مشخص شده‌اند.</li>
+                    <li>وزن، ابعاد و بسته‌بندی تنظیم شده‌اند.</li>
+                    <li>سفارش آزمایشی در موبایل و دسکتاپ ثبت شده است.</li>
+                    <li>کد رهگیری و چاپ لیبل بررسی شده‌اند.</li>
+                </ul>
+                <div class="callout success">
+                    <strong>راه‌اندازی کامل است</strong>
+                    وقتی سفارش آزمایشی نرخ صحیح می‌گیرد، در تیپاکس ثبت می‌شود، کد رهگیری دریافت می‌کند و لیبل آن قابل چاپ است، افزونه آماده استفاده روی فروشگاه است.
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <strong>افزونه حمل با تیپاکس برای ووکامرس</strong>
+        <div>راهنمای فارسی نصب و راه‌اندازی اولیه · مبنای محتوا نسخه ۳.۱۱.۰</div>
+    </footer>
+</div>
+</body>
+</html>

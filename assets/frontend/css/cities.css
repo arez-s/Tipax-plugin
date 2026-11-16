@@ -1,0 +1,53 @@
+.tipax-city-source-field-hidden {
+    display: none !important;
+}
+
+body.tipax-manages-block-cities .wp-block-woocommerce-checkout :is(
+    .wc-block-components-text-input,
+    .wc-block-components-combobox,
+    .wc-block-components-address-form__city
+):has(:is(
+    #shipping-city,
+    #shipping_city,
+    #billing-city,
+    #billing_city,
+    input[autocomplete="address-level2"]
+)) {
+    display: none !important;
+}
+
+.tipax-block-city-field {
+    box-sizing: border-box;
+    margin: 0 0 1rem;
+    width: 100%;
+}
+
+.tipax-block-city-field label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin: 0 0 0.45rem;
+}
+
+.tipax-block-city-select {
+    background: #fff;
+    border: 1px solid #8c8f94;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #2b2d2f;
+    font: inherit;
+    min-height: 48px;
+    padding: 0.65rem 0.75rem;
+    width: 100%;
+}
+
+.tipax-block-city-select:focus {
+    border-color: #0675c1;
+    box-shadow: 0 0 0 1px #0675c1;
+    outline: none;
+}
+
+.tipax-block-city-select:disabled {
+    cursor: wait;
+    opacity: 0.7;
+}
